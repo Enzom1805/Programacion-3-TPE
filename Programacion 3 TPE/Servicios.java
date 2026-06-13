@@ -4,9 +4,9 @@ public class Servicios {
     private ArrayList<Camion> camiones;
     private ArrayList<Paquete> paquetes;
     private HashMap<String, Paquete> mapaPaquete;
-    public Servicios(ArrayList<Camion> camiones, ArrayList<Paquete> paquetes) {
-        this.camiones = camiones;
-        this.paquetes = paquetes;
+    public Servicios() {
+        this.camiones = new ArrayList<>();
+        this.paquetes = new ArrayList<>();
         
         this.mapaPaquete = new HashMap<>();
         for(Paquete p : this.paquetes){
