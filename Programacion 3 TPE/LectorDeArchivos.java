@@ -27,7 +27,7 @@
                 int capacidad = Integer.parseInt(campos[3]);
                 
                 // 4. Creamos el objeto Camion
-                Camion c = new Camion(id_camion, patente, capacidad, esta_refrigerado);
+                Camion c = new Camion(id_camion, patente, capacidad, esta_refrigerado, 0.0);
                 
                 // 5. Lo guardamos en la lista
                 listaCamiones.add(c);

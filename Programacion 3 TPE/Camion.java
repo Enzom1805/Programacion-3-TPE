@@ -6,13 +6,15 @@ public class Camion {
     private boolean esta_refrigerado;
     private int capacidad_kg;
     private ArrayList<Paquete> paquetesCargados;
+    private double pesoOcupado;
     
-    public Camion(String id_camion,String patente, int capacidad_kg, boolean esta_refrigerado){
+    public Camion(String id_camion,String patente, int capacidad_kg, boolean esta_refrigerado, double pesoOcupado){
         this.id_camion = id_camion;
         this.patente = patente;
         this.capacidad_kg = capacidad_kg;
         this.esta_refrigerado = esta_refrigerado;
         this.paquetesCargados = new ArrayList<>();
+        this.pesoOcupado = pesoOcupado;
     }
 
     //getters
@@ -23,11 +25,27 @@ public class Camion {
     public ArrayList<Paquete> getPaquetesCargados(){
         return new ArrayList<>(paquetesCargados);
     }
+    public double getPesoOcupado() {
+        return pesoOcupado;
+    }
 
     //setters
     public void setId_camion(String id_camion) {this.id_camion = id_camion;}
     public void setPatente(String patente) {this.patente = patente;}
     public void setCapacidad_kg(int capacidad_kg) {this.capacidad_kg = capacidad_kg;}
     public void setEsta_refrigerado(boolean esta_refrigerado){this.esta_refrigerado = esta_refrigerado;}
-   
+    public void setPesoOcupado(double pesoOcupado) {
+        this.pesoOcupado = pesoOcupado;
+    }
+    public void agregarPaquete(Paquete p){
+        paquetesCargados.add(p);
+        this.pesoOcupado += p.getPeso_kg();
+    }
+    public void borrarPaquete(Paquete p){
+        if(paquetesCargados.contains(p)){
+            paquetesCargados.remove(p);
+            this.pesoOcupado -= p.getPeso_kg();
+        }
+    }
+    
 }
