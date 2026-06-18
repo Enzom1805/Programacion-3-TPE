@@ -136,12 +136,19 @@ public class Servicios {
 
 
     /*<Explicación del algoritmo Greedy: 
-    Lo que decidimos hacer acá fue elegir el paquete más pesado y sacarlo de nuestros disponibles,
-    para poder seguir agarrando los paquetes con más peso primero
-    Después seleccionamos el camion teniendo en cuenta el paquete previamente obtenido, las condiciones para seleccionarlo son; 
-    - si el paquete contiene alimentos pero el camion no está refrigerado, entonces no puede llevar el paquete seleccionado.
-    - si el peso que quiero subir a mi camion es mayor a la capacidad, entonces no puede llevar el paquete seleccionado.
-    y una vez que evaluo que esas condiciones se cumplen, voy buscando en mi arreglo de camiones, cual es el que tiene mayor
+    Función y justificación de selección:
+    - Para los paquetes: Elegimos siempre el paquete más pesado disponible. 
+    Es más eficiente ubicar primero los elementos más pesados
+    cuando los camiones están vacíos, dejando los paquetes livianos para rellenar 
+    los huecos más chicos al final.
+    - Para los camiones: Elegimos el camión con mayor capacidad restante libre (worst fit).
+    Al usar el camión con más espacio, evitamos saturar un contenedor 
+    rápidamente y nos aseguramos de dejar huecos grandes disponibles para los 
+    siguientes paquetes pesados.
+    Teniendo en cuenta el paquete previamente obtenido, evaluamos si el camión puede llevarlo, y las condiciones para seleccionarlo son; 
+    - si el paquete contiene alimentos pero el camión no está refrigerado, entonces no puede llevar el paquete seleccionado.
+    - si el peso que quiero subir a mi camión es mayor a la capacidad, entonces no puede llevar el paquete seleccionado.
+    y una vez que evaluo que la función esAsignable se cumple, voy buscando en mi arreglo de camiones, cual es el que tiene mayor
     capacidad restante, comparando las diferencias entre capacidad y peso ocupado.
     Una vez obtenido el camion (chequeo que no sea null) le agrego el paquete obtenido al principio, en caso de que no se haya
     encontrado un camion que cumpla con los requisitos necesarios, entonces modifico el valor no asignado en mi clase Solucion,
