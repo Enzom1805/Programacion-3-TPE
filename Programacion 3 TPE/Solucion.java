@@ -35,4 +35,10 @@ public class Solucion {
     public void setCamionesAsignados(ArrayList<Camion> camionesAsignados) {
         this.camionesAsignados = camionesAsignados;
     }
+    public void sumarPesoNoAsignado(double pesoPaquete){
+        this.pesoNoAsignado += pesoPaquete;
+    }
+    public void setMetrica(int metrica) {
+        this.metrica = metrica;
+    }
 }

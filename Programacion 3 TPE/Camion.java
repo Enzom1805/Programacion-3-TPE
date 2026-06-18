@@ -47,5 +47,8 @@ public class Camion {
             this.pesoOcupado -= p.getPeso_kg();
         }
     }
-    
+    public void vaciarCamion() {
+        this.paquetesCargados.clear();
+        this.pesoOcupado = 0.0;
+    }
 }

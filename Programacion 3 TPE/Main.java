@@ -31,8 +31,28 @@ public class Main {
         //SERVICIO 3
         ArrayList<Paquete> nivelUrgencia = gestor.servicio3( 75,105);
          System.out.println("Se encontraron " + nivelUrgencia.size() + " paquetes en ese rango de urgencia.");
-        for(Paquete pu : paquetesConComida){
+        for(Paquete pu : nivelUrgencia){
              System.out.println("Cód: " + pu.getCodigo_paquete() + " | Peso: " + pu.getPeso_kg()  );
+        }
+
+        System.out.println("   RESOLUCIÓN CON ALGORITMO GREEDY");
+        
+        Solucion solucionGreedy = gestor.asignarPaquetesGreedy();
+        
+        if (solucionGreedy != null) {
+            System.out.println(solucionGreedy.toString());
+        } else {
+            System.out.println("Greedy no pudo generar ninguna solución.");
+        }
+
+        System.out.println(" RESOLUCIÓN CON ALGORITMO BACKTRACKING");
+        
+        Solucion solucionBack = gestor.asignarPaquetesBack();
+        
+        if (solucionBack != null) {
+            System.out.println(solucionBack.toString());
+        } else {
+            System.out.println("Backtracking no pudo encontrar ninguna solución.");
         }
     }
 }
