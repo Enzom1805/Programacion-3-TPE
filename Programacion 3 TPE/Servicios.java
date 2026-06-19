@@ -21,10 +21,12 @@ public class Servicios {
         }
     }
 
-    public Paquete servicio1(String cod) {
+    // Complejidad computacional servicio 1:
+    public Paquete servicio1(String cod) { 
         return this.mapaPaquete.get(cod.trim());
     }
 
+    // Complejidad computacional servicio 2:
     public ArrayList<Paquete> servicio2(boolean buscaAlimento) {
         ArrayList<Paquete> filtrados = new ArrayList<>();
         
@@ -36,6 +38,7 @@ public class Servicios {
         return filtrados;  
     }
 
+    // Complejidad computacional servicio 3:
     public ArrayList<Paquete> servicio3(int minimaUrgencia, int maximaUrgencia) {
         ArrayList<Paquete> filtrados = new ArrayList<>();
         for (Paquete p : this.paquetes) {
@@ -69,6 +72,9 @@ public class Servicios {
     Por último, llamo al método recursivo nuevamente, pero cambiando los parametros, a peso no asignado actual, 
     le sumo el peso de paquete no asignado y también mando el index + 1, para seguir recorriendo los paquetes disponibles.
     >*/
+
+    // COMPLEJIDAD COMPUTACIONAL (N = cantidad de paquetes, M = cantidad de camiones):
+    // Complejidad computacional algoritmo backtracking: O((M + 1)^N) 
     public Solucion asignarPaquetesBack(){
         for(Camion c : camiones){
             c.vaciarCamion(); 
@@ -156,6 +162,9 @@ public class Servicios {
     Cuando termine mi bucle while, agrego los camiones que si pudieron ser asignados, setteo la métrica de la solución
     mandandole por parámetro la cantidad de estados generados y por último devuelvo la solución. 
     >*/
+
+    // COMPLEJIDAD COMPUTACIONAL (N = cantidad de paquetes, M = cantidad de camiones): 
+    // Complejidad computacional algoritmo greedy: O(N^2 + N * M)
     public Solucion asignarPaquetesGreedy(){
         for(Camion c : camiones){
             c.vaciarCamion();
