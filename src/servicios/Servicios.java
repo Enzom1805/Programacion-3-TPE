@@ -117,15 +117,19 @@ public class Servicios {
         }
     }   
 
-    // Complejidad computacional servicio 3:
-    public List<Paquete> servicio3(int minimaUrgencia, int maximaUrgencia) {
-        List<Paquete> filtrados = new ArrayList<>();
-        for (Paquete p : this.paquetes) {
-            if (p.getNivel_urgencia() >= minimaUrgencia && p.getNivel_urgencia() <= maximaUrgencia) {
-               filtrados.add(p);
-            }
+    //Complejidad temporal: O(log U + R)
+    //(U = cantidad de niveles de urgencia distintos en el árbol)
+    //(R = cantidad de paquetes encontrados y agregados a la lista final)
+    public List<Paquete> servicio3(int urgenciaMinima, int urgenciaMaxima) {
+        List<Paquete> paquetesEnRango = new ArrayList<>();
+
+        var subArbol = paquetesPorUrgencia.subMap(urgenciaMinima, true, urgenciaMaxima, true);
+
+        for (List<Paquete> lista : subArbol.values()) {
+            paquetesEnRango.addAll(lista);
         }
-        return filtrados;
+
+        return paquetesEnRango;
     }
 
     /*<Explicación del algoritmo de Backtracking;
@@ -139,8 +143,8 @@ public class Servicios {
     los camiones ganadores antes de que la recursividad los vuelva a vaciar.
     >*/
 
-    // COMPLEJIDAD COMPUTACIONAL (N = cantidad de paquetes, M = cantidad de camiones):
-    // Complejidad computacional algoritmo backtracking: O((M + 1)^N) 
+    //Complejidad temporal (Peor caso): O(C^P)
+    //(C = cantidad de camiones, P = cantidad de paquetes).
     public Solucion asignarPaquetesBack(){
         for(Camion c : camiones){
             c.vaciarCamion(); 
