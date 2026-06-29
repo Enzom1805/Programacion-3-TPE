@@ -1,13 +1,18 @@
+package servicios;
+
+import entidades.Camion;
+import entidades.Paquete;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solucion {
-    private ArrayList<Camion> camionesAsignados;
-    private double pesoNoAsignado;
+    private List<Camion> camionesAsignados;
+    private int pesoNoAsignado;
     private int metrica;
 
-    public Solucion(double peso,int metrica){ 
-        this.camionesAsignados = new ArrayList<>();
-        this.pesoNoAsignado = peso;
+    public Solucion(List<Camion> camiones, int pesoNoAsignado, int metrica) {
+        this.camionesAsignados = camiones;
+        this.pesoNoAsignado = pesoNoAsignado;
         this.metrica = metrica;
     }
 

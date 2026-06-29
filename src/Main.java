@@ -1,15 +1,12 @@
-import java.util.ArrayList;
+import servicios.Servicios;
+import servicios.Solucion;
+import entidades.Paquete;
 
+import java.util.List;
 public class Main {
     public static void main(String[] args) {
         
-       
-        LectorDeArchivos lector = new LectorDeArchivos();
-        ArrayList<Camion> misCamiones = lector.obtenerCamiones("Camiones.csv");
-        ArrayList<Paquete> misPaquetes = lector.obtenerPaquetes("Paquetes.csv");
-        
-       
-        Servicios gestor = new Servicios(misCamiones, misPaquetes);
+        Servicios gestor= new Servicios("src/csv/Camiones.csv", "src/csv/Paquetes.csv");
         
         // SERVICIO 1
         Paquete p = gestor.servicio1("P001");
@@ -22,14 +19,14 @@ public class Main {
         }
         
         // SERVICIO 2
-        ArrayList<Paquete> paquetesConComida = gestor.servicio2(true);
+        List<Paquete> paquetesConComida = gestor.servicio2(true);
         System.out.println("Se encontraron " + paquetesConComida.size() + " paquetes con comida.");
         for(Paquete pc : paquetesConComida){
              System.out.println("Cód: " + pc.getCodigo_paquete() + " | Peso: " + pc.getPeso_kg()  );
         }
         
         //SERVICIO 3
-        ArrayList<Paquete> nivelUrgencia = gestor.servicio3( 75,105);
+        List<Paquete> nivelUrgencia = gestor.servicio3( 75,105);
          System.out.println("Se encontraron " + nivelUrgencia.size() + " paquetes en ese rango de urgencia.");
         for(Paquete pu : nivelUrgencia){
              System.out.println("Cód: " + pu.getCodigo_paquete() + " | Peso: " + pu.getPeso_kg()  );
